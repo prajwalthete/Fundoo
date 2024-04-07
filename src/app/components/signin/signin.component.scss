@@ -1,3 +1,5 @@
+
+/* Keep the form styling */
 .wrapper {
   display: flex;
   justify-content: center;
@@ -57,18 +59,17 @@ input[type="email"] {
 button {
   padding: 0.2px 85px;
   font-size: 13px;
-  color: #fff;
+  color: white;
   border: none;
   border-radius: 6px;
- 
 }
-
 
 button[type="button"] {
   background-color: #999;
 }
 
 button[type="submit"] {
+  color: white; /* Text color */
   background-color: #007bff; /* Blue color */
 }
 
