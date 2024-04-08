@@ -9,7 +9,7 @@
 
 .border {
   display: flex;
-  border: 1px solid #4caf50; /* Green border */
+  border: 1px solid #999; /*  border */
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -76,4 +76,12 @@ button[type="submit"] {
 .text-below-image {
   text-align: center;
   margin-top: 10px;
+}
+
+.create-account button {
+  color: blue; /* Text color */
+   background-color: transparent; /* Background color */
+  border-color: white; /* Border color */
+  font-size: 12px; /* Adjust the font size as needed */
+  padding: 4px 8px; /* Adjust the padding to make the button smaller */
 }

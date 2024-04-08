@@ -1,4 +1,4 @@
-<p>signin works!</p>
+<!-- <p>signin works!</p> -->
 
 <!-- Wrapper for the entire content -->
 <div class="wrapper" style="width: 600px; margin: 0 auto">
@@ -17,7 +17,7 @@
       <h5 class="sub-header">Use your Fundoo Account</h5>
 
       <!-- Form for user login with formGroup directive -->
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="loginForm" (ngSubmit)="handelLogin()">
         <!-- Input container -->
         <div class="input" style="display: inline-block; text-align: left">
           <!-- Email input field -->
@@ -81,10 +81,14 @@
 
       <!-- Link for creating a new account -->
       <div class="create-account">
-        <small
-          ><a href="#" style="text-decoration: none; color: blue"
-            >Create Account</a
-          ></small
+        <button
+          (click)="handelCreateAccount()"
+          mat-stroked-button
+          color="primary"
+          type="submit"
+        >
+          create-account
+        </button>
         >
       </div>
     </div>
