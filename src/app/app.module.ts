@@ -20,6 +20,11 @@ import { FundooheaderComponent } from './components/fundooheader/fundooheader.co
 //for header
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { DisplaynotesComponent } from './components/displaynotes/displaynotes.component';
+
+//for display notes 
+import { MatDialogModule } from '@angular/material/dialog'; // Import MatDialogModule for using MatDialog
+import { MatSnackBarModule } from '@angular/material/snack-bar'; // Import MatSnackBarModule for using MatSnackBar
 
 @NgModule({
   declarations: [
@@ -27,7 +32,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     SignupComponent,
     SigninComponent,
     CreatenoteComponent,
-    FundooheaderComponent
+    FundooheaderComponent,
+    DisplaynotesComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +47,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     HttpClientModule,
     FormsModule,
     MatMenuModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatDialogModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
