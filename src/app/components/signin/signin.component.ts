@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { error } from 'console';
 import { UserService } from 'src/app/services/userService/user.service';
-
-
 
 @Component({
   selector: 'app-signin',
@@ -15,8 +12,9 @@ export class SigninComponent implements OnInit {
 
   loginForm!: FormGroup;
   submitted = false;
-  // hide = true; 
-  constructor( private userService:UserService, private formBuilder: FormBuilder, private  router: Router) { }
+  errorMessage: string = ''; // Declare errorMessage property here
+
+  constructor(private userService: UserService, private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -35,19 +33,22 @@ export class SigninComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-    const {email, password}= this.loginForm.value;
+    const { email, password } = this.loginForm.value;
 
     this.userService.loginApi({
-      email : email,
-      password : password
-    }).subscribe( results =>{console.log(results)},error=>{console.log(error)});
-
-
-    console.log('Login successful', this.loginForm.value);
+      email: email,
+      password: password
+    }).subscribe(
+      results => {
+        this.errorMessage = results.message;
+      },
+      error => {
+        this.errorMessage = 'An error occurred. Please try again later.';
+      }
+    );
   }
 
-  
-  handelCreateAccount(){
+  handelCreateAccount() {
     this.router.navigate(['/signup']);
   }
 }

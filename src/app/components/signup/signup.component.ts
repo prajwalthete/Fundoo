@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/userService/user.service';
-
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -12,8 +11,11 @@ import { UserService } from 'src/app/services/userService/user.service';
 export class SignupComponent implements OnInit {
   registerForm!: FormGroup; 
   submitted = false;
+  registrationMessage: string = '';
+  registrationMessageColor: string = 'green'; // Change this to any color you prefer
 
-  constructor(private userService:UserService, private formBuilder: FormBuilder) { }
+
+  constructor(private userService:UserService, private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
@@ -41,11 +43,27 @@ export class SignupComponent implements OnInit {
       lastName:lastName,
       email : email,
       password : password
-    }).subscribe( results =>{console.log(results)},error=>{console.log(error)});
-
-    // TODO: Implement signup functionality
-
+    }).subscribe(
+      (response) => {
+        // Assuming the API returns a message in the response
+      this.registrationMessage = response.message;
+      this.registrationMessageColor = 'green'; // Success color
+      },
+      (error) => {
+       // Handle error
+      this.registrationMessage = 'An error occurred. Please try again later.';
+      this.registrationMessageColor = 'red'; // Error color
+      }
+    );
     console.log('signup successful', this.registerForm.value);
+  // Redirect to login page after successful registration
+  //this.redirectLogin();
+
+  }
+  redirectLogin(){
+    this.router.navigate(['']);
   }
 
+
 }
+  

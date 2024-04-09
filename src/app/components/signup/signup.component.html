@@ -1,3 +1,6 @@
+<!-- <p>signin works!</p> -->
+
+<!-- Wrapper for the entire content -->
 <div class="wrapper">
   <div class="border">
     <div class="leftside">
@@ -86,6 +89,15 @@
               Register
             </button>
           </div>
+        </div>
+
+        <!-- Display message from API -->
+        <div
+          *ngIf="registrationMessage"
+          class="registration-message"
+          [ngStyle]="{ color: registrationMessageColor }"
+        >
+          {{ registrationMessage }}
         </div>
       </form>
     </div>
