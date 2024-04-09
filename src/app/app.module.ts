@@ -15,14 +15,19 @@ import { HttpClientModule } from '@angular/common/http';
 import { CreatenoteComponent } from './components/createnote/createnote.component';
 
 import { FormsModule } from '@angular/forms';
+import { FundooheaderComponent } from './components/fundooheader/fundooheader.component';
 
+//for header
+import { MatMenuModule } from '@angular/material/menu';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
     SigninComponent,
-    CreatenoteComponent
+    CreatenoteComponent,
+    FundooheaderComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +39,9 @@ import { FormsModule } from '@angular/forms';
     MatButtonModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatMenuModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

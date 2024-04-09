@@ -13,6 +13,7 @@ export class SigninComponent implements OnInit {
   loginForm!: FormGroup;
   submitted = false;
   errorMessage: string = ''; // Declare errorMessage property here
+  loginMessageColor: string = 'green';
 
   constructor(private userService: UserService, private formBuilder: FormBuilder, private router: Router) { }
 
@@ -40,10 +41,20 @@ export class SigninComponent implements OnInit {
       password: password
     }).subscribe(
       results => {
+        
+        console.log(results);
+        
         this.errorMessage = results.message;
+        this.loginMessageColor= 'green';
+        setTimeout(() => {
+          this.errorMessage = ''; // Clear the message after 5 seconds
+        }, 5000); // 5 seconds delay
+      
+        
       },
       error => {
-        this.errorMessage = 'An error occurred. Please try again later.';
+       this.errorMessage = 'Invalid credentials.!';
+       this.loginMessageColor = 'red';
       }
     );
   }

@@ -1,15 +1,21 @@
-<p>createnote works!</p>
+<!-- Container for notes -->
 <div class="notes-container">
+  <!-- Card for creating a new note -->
   <div class="mat-card1">
+    <!-- Display note creation button -->
     <div
       class="note1"
       *ngIf="hiddenCreateNote; else createNote"
       (click)="handleCreateNote('open')"
     >
+      <!-- Text for creating a note -->
       Take a note...
     </div>
+    <!-- Icons for new note creation options -->
     <div class="icons1" *ngIf="hiddenCreateNote">
+      <!-- Button for creating a new list -->
       <button class="btn1" matTooltip="New list">
+        <!-- Icon for new list -->
         <mat-icon
           class="icon1"
           svgIcon="Tick-icon"
@@ -17,7 +23,9 @@
           aria-label="Tick SVG icon"
         ></mat-icon>
       </button>
+      <!-- Button for creating a new note with drawing -->
       <button class="btn1" matTooltip="New note with drawing">
+        <!-- Icon for new note with drawing -->
         <mat-icon
           class="icon1"
           svgIcon="Brush-icon"
@@ -25,7 +33,9 @@
           aria-label="Brush view SVG icon"
         ></mat-icon>
       </button>
+      <!-- Button for creating a new note with image -->
       <button class="btn1" matTooltip="New note with image">
+        <!-- Icon for new note with image -->
         <mat-icon
           class="icon1"
           svgIcon="Img-icon"
@@ -36,9 +46,13 @@
     </div>
   </div>
 
+  <!-- Template for creating a new note -->
   <ng-template #createNote class="main-div">
+    <!-- Container for displaying the note -->
     <div class="displaynote-div" [style.background-color]="color">
+      <!-- Card for the note -->
       <div class="card">
+        <!-- Title input field -->
         <div class="card-title">
           <input
             placeholder="Title"
@@ -46,13 +60,16 @@
             [style.background-color]="color"
           />
         </div>
+        <!-- Description input field -->
         <textarea
           class="card-description"
           placeholder="Take a note..."
           [(ngModel)]="description"
           [style.background-color]="color"
         ></textarea>
+        <!-- Container for icons -->
         <div class="icon-container">
+          <!-- Button for reminder -->
           <button class="btn">
             <mat-icon
               class="icon"
@@ -61,6 +78,7 @@
               aria-label="Reminder SVG icon"
             ></mat-icon>
           </button>
+          <!-- Button for collaborator -->
           <button class="btn">
             <mat-icon
               class="icon"
@@ -69,6 +87,7 @@
               aria-label="Collaborator SVG icon"
             ></mat-icon>
           </button>
+          <!-- Button for color palette -->
           <button class="btn" (click)="toggleColorPicker()">
             <mat-icon
               class="icon"
@@ -77,6 +96,7 @@
               aria-label="Color Palette SVG icon"
             ></mat-icon>
           </button>
+          <!-- Button for image -->
           <button class="btn">
             <mat-icon
               class="icon"
@@ -85,6 +105,7 @@
               aria-label="Image SVG icon"
             ></mat-icon>
           </button>
+          <!-- Button for archiving -->
           <button class="btn" (click)="handleArchive()">
             <mat-icon
               class="icon"
@@ -93,6 +114,7 @@
               aria-label="Archive SVG icon"
             ></mat-icon>
           </button>
+          <!-- Button for more options -->
           <button class="btn">
             <mat-icon
               class="icon"
@@ -101,6 +123,7 @@
               aria-label="More SVG icon"
             ></mat-icon>
           </button>
+          <!-- Button for undo -->
           <button class="btn">
             <mat-icon
               class="icon"
@@ -109,6 +132,7 @@
               aria-label="Undo SVG icon"
             ></mat-icon>
           </button>
+          <!-- Button for redo -->
           <button class="btn">
             <mat-icon
               class="icon"
@@ -117,6 +141,7 @@
               aria-label="Restore SVG icon"
             ></mat-icon>
           </button>
+          <!-- Button for closing note creation -->
           <button
             mat-button
             style="font-size: 17px"
@@ -128,13 +153,17 @@
       </div>
     </div>
   </ng-template>
+
+  <!-- Container for color picker -->
   <div *ngIf="showColorPicker" class="color-picker-container">
     <div class="row">
+      <!-- Button for color option -->
       <button
         class="color-btn"
         style="background-color: #faafa8; border: 1px solid #faafa8"
         (click)="selectColor('#FAAFA8')"
       ></button>
+      <!-- Add more color buttons with different background colors and click handlers -->
       <button
         class="color-btn"
         style="background-color: #f39f76; border: 1px solid #f39f76"
