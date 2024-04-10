@@ -15,6 +15,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { CreatenoteComponent } from './components/createnote/createnote.component';
 
 import { FormsModule } from '@angular/forms';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { NotecontainerComponent } from './components/notecontainer/notecontainer.component';
+import { ArchivecontainerComponent } from './components/archivecontainer/archivecontainer.component';
+import { TrashcontainerComponent } from './components/trashcontainer/trashcontainer.component';
 
 
 @NgModule({
@@ -22,7 +26,12 @@ import { FormsModule } from '@angular/forms';
     AppComponent,
     SignupComponent,
     SigninComponent,
-    CreatenoteComponent
+    CreatenoteComponent,
+    DashboardComponent,
+    NotecontainerComponent,
+    ArchivecontainerComponent,
+    TrashcontainerComponent,
+   
   ],
   imports: [
     BrowserModule,
