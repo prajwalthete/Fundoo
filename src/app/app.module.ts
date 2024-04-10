@@ -15,11 +15,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { CreatenoteComponent } from './components/createnote/createnote.component';
 
 import { FormsModule } from '@angular/forms';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { NotecontainerComponent } from './components/notecontainer/notecontainer.component';
-import { ArchivecontainerComponent } from './components/archivecontainer/archivecontainer.component';
-import { TrashcontainerComponent } from './components/trashcontainer/trashcontainer.component';
+import { FundooheaderComponent } from './components/fundooheader/fundooheader.component';
 
+//for header
+import { MatMenuModule } from '@angular/material/menu';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -27,11 +27,7 @@ import { TrashcontainerComponent } from './components/trashcontainer/trashcontai
     SignupComponent,
     SigninComponent,
     CreatenoteComponent,
-    DashboardComponent,
-    NotecontainerComponent,
-    ArchivecontainerComponent,
-    TrashcontainerComponent,
-   
+    FundooheaderComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +39,9 @@ import { TrashcontainerComponent } from './components/trashcontainer/trashcontai
     MatButtonModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatMenuModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

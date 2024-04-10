@@ -36,34 +36,34 @@ export class SignupComponent implements OnInit {
     if (this.registerForm.invalid) {
       return;
     }
-    const {firstName,lastName,email, password}= this.registerForm.value;
+    const {firstName, lastName, email, password} = this.registerForm.value;
 
     this.userService.registerApi({
-      firstName:firstName,
-      lastName:lastName,
-      email : email,
-      password : password
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      password: password
     }).subscribe(
       (response) => {
         // Assuming the API returns a message in the response
-      this.registrationMessage = response.message;
-      this.registrationMessageColor = 'green'; // Success color
+        this.registrationMessage = response.message;
+        this.registrationMessageColor = 'green'; // Success color
+
+        // Delay login redirection for 3 seconds
+        setTimeout(() => {
+          this.redirectLogin();
+        }, 3000); // 3 seconds delay
       },
       (error) => {
-       // Handle error
-      this.registrationMessage = 'An error occurred. Please try again later.';
-      this.registrationMessageColor = 'red'; // Error color
+        // Handle error
+        this.registrationMessage = 'An error occurred. Please try again later.';
+        this.registrationMessageColor = 'red'; // Error color
       }
     );
     console.log('signup successful', this.registerForm.value);
-  // Redirect to login page after successful registration
-  //this.redirectLogin();
-
   }
+
   redirectLogin(){
     this.router.navigate(['']);
   }
-
-
 }
-  

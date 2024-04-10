@@ -1,5 +1,3 @@
-<!-- <p>signin works!</p> -->
-
 <!-- Wrapper for the entire content -->
 <div class="wrapper" style="width: 600px; margin: 0 auto">
   <!-- Border around the content -->
@@ -61,7 +59,11 @@
           </div>
 
           <!-- Display error message from API -->
-          <div *ngIf="errorMessage" class="error-message">
+          <div
+            *ngIf="errorMessage"
+            [style.color]="loginMessageColor"
+            class="error-message"
+          >
             {{ errorMessage }}
           </div>
 
