@@ -20,15 +20,11 @@ import { FundooheaderComponent } from './components/fundooheader/fundooheader.co
 //for header
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { DisplaynotesComponent } from './components/displaynotes/displaynotes.component';
 
-
-//sidenav
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { NotecontainerComponent } from './components/notecontainer/notecontainer.component';
-import { TrashcontainerComponent } from './components/trashcontainer/trashcontainer.component';
-import { ArchivecontainerComponent } from './components/archivecontainer/archivecontainer.component';
+//for display notes 
+import { MatDialogModule } from '@angular/material/dialog'; // Import MatDialogModule for using MatDialog
+import { MatSnackBarModule } from '@angular/material/snack-bar'; // Import MatSnackBarModule for using MatSnackBar
 
 @NgModule({
   declarations: [
@@ -42,12 +38,8 @@ import { ArchivecontainerComponent } from './components/archivecontainer/archive
     TrashcontainerComponent,
     ArchivecontainerComponent,
     CreatenoteComponent,
-   
-  
-   
-   
-   
-
+    FundooheaderComponent,
+    DisplaynotesComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +54,8 @@ import { ArchivecontainerComponent } from './components/archivecontainer/archive
     FormsModule,
     MatMenuModule,
     MatToolbarModule,
-    MatSidenavModule
+    MatDialogModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
