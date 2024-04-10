@@ -20,14 +20,34 @@ import { FundooheaderComponent } from './components/fundooheader/fundooheader.co
 //for header
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
+
+
+//sidenav
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { NotecontainerComponent } from './components/notecontainer/notecontainer.component';
+import { TrashcontainerComponent } from './components/trashcontainer/trashcontainer.component';
+import { ArchivecontainerComponent } from './components/archivecontainer/archivecontainer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
     SigninComponent,
+    DashboardComponent,
+    FundooheaderComponent,
+    SidenavComponent,
+    NotecontainerComponent,
+    TrashcontainerComponent,
+    ArchivecontainerComponent,
     CreatenoteComponent,
-    FundooheaderComponent
+   
+  
+   
+   
+   
+
   ],
   imports: [
     BrowserModule,
@@ -41,7 +61,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     HttpClientModule,
     FormsModule,
     MatMenuModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent]

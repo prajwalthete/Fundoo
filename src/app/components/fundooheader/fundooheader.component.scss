@@ -1,4 +1,4 @@
-::ng-deep .app-fundoo-header-cnt {
+ ::ng-deep .app-fundoo-header-cnt {
     display: flex;
     width: 100%;
    // position: fixed;
@@ -106,50 +106,53 @@ span {
  .button {
     background-color:white;
 }
+ 
+ 
 
 
-// .dashboard_header {
-//     .mat-toolbar {
-//       height: 64px; // Adjust height as needed
-//       padding: 0 24px; // Add padding for better spacing
-//       display: flex;
-//       justify-content: space-between;
-//       align-items: center;
+/* 
+.dashboard_header {
+    .mat-toolbar {
+      height: 64px; // Adjust height as needed
+      padding: 0 24px; // Add padding for better spacing
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
   
-//       .logo-container {
-//         display: flex;
-//         align-items: center;
+      .logo-container {
+        display: flex;
+        align-items: center;
   
-//         .keep-img {
-//           width: 40px; // Adjust image size as needed
-//           margin-right: 12px; // Add margin between logo and brand name
-//         }
+        .keep-img {
+          width: 40px; // Adjust image size as needed
+          margin-right: 12px; // Add margin between logo and brand name
+        }
   
-//         .brand-name {
-//           font-size: 20px; // Adjust font size as needed
-//           font-weight: bold;
-//         }
-//       }
+        .brand-name {
+          font-size: 20px; // Adjust font size as needed
+          font-weight: bold;
+        }
+      }
   
-//       .search-container {
-//         display: flex;
-//         align-items: center;
+      .search-container {
+        display: flex;
+        align-items: center;
   
-//         .search-input {
-//           width: 500px; // Adjust input width as needed
-//           height: 30px;
-//           margin-left: 12px; // Add margin between search icon and input field
-//         }
-//       }
+        .search-input {
+          width: 500px; // Adjust input width as needed
+          height: 30px;
+          margin-left: 12px; // Add margin between search icon and input field
+        }
+      }
 
-//       .action-buttons {
-//         display: flex;
-//         align-items: center;
+      .action-buttons {
+        display: flex;
+        align-items: center;
   
-//         .btn {
-//           margin-left: 8px; // Add margin between action buttons
-//         }
-//       }
-//     }
-//   }
-  
+        .btn {
+          margin-left: 8px; // Add margin between action buttons
+        }
+      }
+    }
+  }
+   */
