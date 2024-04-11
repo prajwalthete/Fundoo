@@ -1,224 +1,217 @@
-<!-- Container for notes -->
-<div class="notes-container">
-  <!-- Card for creating a new note -->
-  <div class="mat-card1">
-    <!-- Display note creation button -->
-    <div
-      class="note1"
-      *ngIf="hiddenCreateNote; else createNote"
-      (click)="handleCreateNote('open')"
-    >
-      <!-- Text for creating a note -->
-      Take a note...
-    </div>
-    <!-- Icons for new note creation options -->
-    <div class="icons1" *ngIf="hiddenCreateNote">
-      <!-- Button for creating a new list -->
-      <button class="btn1" matTooltip="New list">
-        <!-- Icon for new list -->
-        <mat-icon
-          class="icon1"
-          svgIcon="Tick-icon"
-          aria-hidden="true"
-          aria-label="Tick SVG icon"
-        ></mat-icon>
-      </button>
-      <!-- Button for creating a new note with drawing -->
-      <button class="btn1" matTooltip="New note with drawing">
-        <!-- Icon for new note with drawing -->
-        <mat-icon
-          class="icon1"
-          svgIcon="Brush-icon"
-          aria-hidden="true"
-          aria-label="Brush view SVG icon"
-        ></mat-icon>
-      </button>
-      <!-- Button for creating a new note with image -->
-      <button class="btn1" matTooltip="New note with image">
-        <!-- Icon for new note with image -->
-        <mat-icon
-          class="icon1"
-          svgIcon="Img-icon"
-          aria-hidden="true"
-          aria-label="Img view SVG icon"
-        ></mat-icon>
-      </button>
-    </div>
-  </div>
-
-  <!-- Template for creating a new note -->
-  <ng-template #createNote class="main-div">
-    <!-- Container for displaying the note -->
-    <div class="displaynote-div" [style.background-color]="color">
-      <!-- Card for the note -->
-      <div class="card">
-        <!-- Title input field -->
-        <div class="card-title">
-          <input
-            placeholder="Title"
-            [(ngModel)]="title"
-            [style.background-color]="color"
-          />
-        </div>
-        <!-- Description input field -->
-        <textarea
-          class="card-description"
-          placeholder="Take a note..."
-          [(ngModel)]="description"
-          [style.background-color]="color"
-        ></textarea>
-        <!-- Container for icons -->
-        <div class="icon-container">
-          <!-- Button for reminder -->
-          <button class="btn">
-            <mat-icon
-              class="icon"
-              svgIcon="reminder-icon"
-              aria-hidden="false"
-              aria-label="Reminder SVG icon"
-            ></mat-icon>
-          </button>
-          <!-- Button for collaborator -->
-          <button class="btn">
-            <mat-icon
-              class="icon"
-              svgIcon="coll-icon"
-              aria-hidden="false"
-              aria-label="Collaborator SVG icon"
-            ></mat-icon>
-          </button>
-          <!-- Button for color palette -->
-          <button class="btn" (click)="toggleColorPicker()">
-            <mat-icon
-              class="icon"
-              svgIcon="Color-Palatte-icon"
-              aria-hidden="false"
-              aria-label="Color Palette SVG icon"
-            ></mat-icon>
-          </button>
-          <!-- Button for image -->
-          <button class="btn">
-            <mat-icon
-              class="icon"
-              svgIcon="img-icon"
-              aria-hidden="false"
-              aria-label="Image SVG icon"
-            ></mat-icon>
-          </button>
-          <!-- Button for archiving -->
-          <button class="btn" (click)="handleArchive()">
-            <mat-icon
-              class="icon"
-              svgIcon="archive-icon"
-              aria-hidden="false"
-              aria-label="Archive SVG icon"
-            ></mat-icon>
-          </button>
-          <!-- Button for more options -->
-          <button class="btn">
-            <mat-icon
-              class="icon"
-              svgIcon="more-icon"
-              aria-hidden="false"
-              aria-label="More SVG icon"
-            ></mat-icon>
-          </button>
-          <!-- Button for undo -->
-          <button class="btn">
-            <mat-icon
-              class="icon"
-              svgIcon="undo-icon"
-              aria-hidden="false"
-              aria-label="Undo SVG icon"
-            ></mat-icon>
-          </button>
-          <!-- Button for redo -->
-          <button class="btn">
-            <mat-icon
-              class="icon"
-              svgIcon="redo-icon"
-              aria-hidden="false"
-              aria-label="Restore SVG icon"
-            ></mat-icon>
-          </button>
-          <!-- Button for closing note creation -->
-          <button
-            mat-button
-            style="font-size: 17px"
-            (click)="handleCreateNote('close')"
-          >
-            Close
-          </button>
-        </div>
-      </div>
-    </div>
-  </ng-template>
-
-  <!-- Container for color picker -->
-  <div *ngIf="showColorPicker" class="color-picker-container">
-    <div class="row">
-      <!-- Button for color option -->
-      <button
-        class="color-btn"
-        style="background-color: #faafa8; border: 1px solid #faafa8"
-        (click)="selectColor('#FAAFA8')"
-      ></button>
-      <!-- Add more color buttons with different background colors and click handlers -->
-      <button
-        class="color-btn"
-        style="background-color: #f39f76; border: 1px solid #f39f76"
-        (click)="selectColor('#F39F76')"
-      ></button>
-      <button
-        class="color-btn"
-        style="background-color: #fff8b8; border: 1px solid #fff8b8"
-        (click)="selectColor('#FFF8B8')"
-      ></button>
-      <button
-        class="color-btn"
-        style="background-color: #e2f6d3; border: 1px solid #e2f6d3"
-        (click)="selectColor('#E2F6D3')"
-      ></button>
-      <button
-        class="color-btn"
-        style="background-color: #b4ddd3; border: 1px solid #b4ddd3"
-        (click)="selectColor('#B4DDD3')"
-      ></button>
-      <button
-        class="color-btn"
-        style="background-color: #d4e4ed; border: 1px solid #d4e4ed"
-        (click)="selectColor('#D4E4ED')"
-      ></button>
-      <button
-        class="color-btn"
-        style="background-color: #aeccdc; border: 1px solid #aeccdc"
-        (click)="selectColor('#AECCDC')"
-      ></button>
-      <button
-        class="color-btn"
-        style="background-color: #d3bfdb; border: 1px solid #d3bfdb"
-        (click)="selectColor('#D3BFDB')"
-      ></button>
-      <button
-        class="color-btn"
-        style="background-color: #f6e2dd; border: 1px solid #f6e2dd"
-        (click)="selectColor('#F6E2DD')"
-      ></button>
-      <button
-        class="color-btn"
-        style="background-color: #e9e3d4; border: 1px solid #e9e3d4"
-        (click)="selectColor('#E9E3D4')"
-      ></button>
-      <button
-        class="color-btn"
-        style="background-color: #efeff1; border: 1px solid #efeff1"
-        (click)="selectColor('#EFEFF1')"
-      ></button>
-      <button
-        class="color-btn"
-        style="background-color: #d3bfdb; border: 1px solid #d3bfdb"
-        (click)="selectColor('#D3BFDB')"
-      ></button>
-    </div>
+<!-- <div class="notes-container"> -->
+<div
+  class="mat-card"
+  *ngIf="hiddenCreateNote; else createNote"
+  (click)="handleCreateNote('open')"
+>
+  <div class="note">Take a note...</div>
+  <div class="icons">
+    <button class="btn1" matTooltip="New list">
+      <mat-icon
+        class="icon"
+        svgIcon="Tick-icon"
+        aria-hidden="true"
+        aria-label="Tick SVG icon"
+      ></mat-icon>
+    </button>
+    <button class="btn1" matTooltip="New note with drawing">
+      <mat-icon
+        class="icon"
+        svgIcon="Brush-icon"
+        aria-hidden="true"
+        aria-label="Brush view SVG icon"
+      ></mat-icon>
+    </button>
+    <button class="btn1" matTooltip="New note with image">
+      <mat-icon
+        class="icon"
+        svgIcon="Img-icon"
+        aria-hidden="true"
+        aria-label="Img view SVG icon"
+      ></mat-icon>
+    </button>
   </div>
 </div>
+
+<ng-template #createNote class="main-div">
+  <div class="displaynote-div" [style.background-color]="color">
+    <div class="card">
+      <div class="card-title">
+        <input
+          placeholder="Title"
+          [(ngModel)]="title"
+          [style.background-color]="color"
+        />
+      </div>
+      <textarea
+        class="card-description"
+        placeholder="Take a note..."
+        [(ngModel)]="description"
+        [style.background-color]="color"
+      ></textarea>
+      <div class="icon-container">
+        <button class="btn">
+          <mat-icon
+            class="icon"
+            svgIcon="reminder-icon"
+            aria-hidden="false"
+            aria-label="Reminder SVG icon"
+          ></mat-icon>
+        </button>
+        <button class="btn">
+          <mat-icon
+            class="icon"
+            svgIcon="coll-icon"
+            aria-hidden="false"
+            aria-label="Collaborator SVG icon"
+          ></mat-icon>
+        </button>
+        <button class="btn" (click)="toggleColorPicker()">
+          <mat-icon
+            class="icon"
+            svgIcon="Color-Palatte-icon"
+            aria-hidden="false"
+            aria-label="Color Palette SVG icon"
+          ></mat-icon>
+        </button>
+        <button class="btn">
+          <mat-icon
+            class="icon"
+            svgIcon="img-icon"
+            aria-hidden="false"
+            aria-label="Image SVG icon"
+          ></mat-icon>
+        </button>
+        <button class="btn" (click)="handleArchive()">
+          <mat-icon
+            class="icon"
+            svgIcon="archive-icon"
+            aria-hidden="false"
+            aria-label="Archive SVG icon"
+          ></mat-icon>
+        </button>
+        <button class="btn">
+          <mat-icon
+            class="icon"
+            svgIcon="more-icon"
+            aria-hidden="false"
+            aria-label="More SVG icon"
+          ></mat-icon>
+        </button>
+        <button class="btn">
+          <mat-icon
+            class="icon"
+            svgIcon="undo-icon"
+            aria-hidden="false"
+            aria-label="Undo SVG icon"
+          ></mat-icon>
+        </button>
+        <button class="btn">
+          <mat-icon
+            class="icon"
+            svgIcon="redo-icon"
+            aria-hidden="false"
+            aria-label="Restore SVG icon"
+          ></mat-icon>
+        </button>
+        <button
+          mat-button
+          style="font-size: 17px"
+          (click)="handleCreateNote('close')"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<!-- <div *ngIf="showColorPicker" class="color-picker-container">
+    <div class="row">
+      <button class="color-btn" style="background-color: #faafa8; border: none" (click)="selectColor('#FAAFA8')"></button>
+      <button class="color-btn" style="background-color: #f39f76; border: none" (click)="selectColor('#F39F76')"></button>
+      <button class="color-btn" style="background-color: #fff8b8; border: none" (click)="selectColor('#FFF8B8')"></button>
+      <button class="color-btn" style="background-color: #e2f6d3; border: none" (click)="selectColor('#E2F6D3')"></button>
+      <button class="color-btn" style="background-color: #b4ddd3; border: none" (click)="selectColor('#B4DDD3')"></button>
+      <button class="color-btn" style="background-color: #d4e4ed; border: none" (click)="selectColor('#D4E4ED')"></button>
+      <button class="color-btn" style="background-color: #aeccdc; border: none" (click)="selectColor('#AECCDC')"></button>
+      <button class="color-btn" style="background-color: #d3bfdb; border: none" (click)="selectColor('#D3BFDB')"></button>
+      <button class="color-btn" style="background-color: #f6e2dd; border: none" (click)="selectColor('#F6E2DD')"></button>
+      <button class="color-btn" style="background-color: #e9e3d4; border: none" (click)="selectColor('#E9E3D4')"></button>
+      <button class="color-btn" style="background-color: #efeff1; border: none" (click)="selectColor('#EFEFF1')"></button>
+      <button class="color-btn" style="background-color: #d3bfdb; border: none" (click)="selectColor('#D3BFDB')"></button>
+    </div>
+  </div> -->
+<!-- </div> -->
+
+<!-- <div class="carddemoBasicUsage">
+  <div class="md-padding">
+    <div>
+      <form name="userForm">
+        <div>
+          <mat-form-field class="sm-block">
+            <mat-label>Search</mat-label>
+            <input matInput [(ngModel)]="query[queryBy]">
+          </mat-form-field>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="md-padding" layout-xs="column" layout="column">
+    <div flex-xs="" flex-gt-xs="50" layout="row">
+      <mat-card *ngFor="let card of cards | filter:query">
+        <div class='wrap' [ngStyle]="myStyle">
+          <div class='colours'>
+            <div [ngStyle]="{'background': color.hex}" *ngFor="let color of colors" (click)="colour(color)">
+            </div>
+          </div>
+          <mat-card-title>
+            <mat-card-title-group>
+              <span *ngIf="!card.editing" class="md-headline">{{card.title}}</span>
+              <mat-form-field *ngIf="card.editing" class="md-block">
+                <mat-label>Title</mat-label>
+                <input matInput [(ngModel)]="card.title">
+              </mat-form-field>
+            </mat-card-title-group>
+          </mat-card-title>
+          <mat-card-content>
+            <p *ngIf="!card.editing">{{card.description}}</p>
+            <mat-form-field *ngIf="card.editing" class="md-block">
+              <mat-label>Content</mat-label>
+              <textarea matInput [(ngModel)]="card.description" maxlength="140" rows="3"></textarea>
+            </mat-form-field>
+          </mat-card-content>
+          <mat-card-actions layout="row" layout-align="end center">
+            <button *ngIf="!card.editing" mat-raised-button color="primary" (click)="editCard(card)">Edit</button>
+            <button *ngIf="card.editing" mat-raised-button color="primary" (click)="doneEditing(card)">Save</button>
+            <button *ngIf="card.editing" mat-raised-button color="primary" (click)="cancel(card)">Cancel</button>
+            <button *ngIf="!card.editing" mat-raised-button color="warn" (click)="del(card.id)">Delete</button>
+          </mat-card-actions>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+  <div class="md-padding">
+    <section *ngIf="buttonOn" layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+      <button mat-fab (click)="toggle()">
+        <mat-icon aria-label="Add new">add</mat-icon>
+      </button>
+    </section>
+    <div *ngIf="!buttonOn">
+      <form name="cardForm" method="post" (ngSubmit)="edit(cards)">
+        <div>
+          <mat-form-field class="md-block">
+            <mat-label>Title</mat-label>
+            <input matInput [(ngModel)]="title">
+          </mat-form-field>
+        </div>
+        <mat-form-field class="md-block">
+          <mat-label>Text</mat-label>
+          <textarea matInput [(ngModel)]="description" maxlength="140" rows="3"></textarea>
+        </mat-form-field>
+        <section layout="row" layout-align="center center" layout-wrap>
+          <button mat-raised-button color="primary" (click)="add()">Add</button>
+        </section>
+      </form>
+    </div>
+  </div>
+</div> -->

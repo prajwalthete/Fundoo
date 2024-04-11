@@ -1,17 +1,18 @@
-.mat-card1 {
-    display: flex;
+.mat-card {
+    display: flex;    
     align-items: center;
     justify-content: space-between;
     background-color: white;
     border-radius: 5px;
     width: 700px;
-    height: 94%;
+    // height: 94%;    
     padding: 3px 0px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-    margin-top: 20px;  
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-top: 20px;
+    margin-left: 250px;
 }   
 
-.note1 {
+.note {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -21,18 +22,20 @@
     padding: 11px 10px 11px 11px;
 }
 
-.icons1 button {
+.icons button {
     margin-right: 10px; 
     border: none;
     background-color: white;
 }
 
-.icons1 button:active,
-.btn1:hover {
+.icons button:active,
+.btn:hover {
     background-color: #dddedf;
     border-radius: 100px;
     cursor: pointer;
 }
+
+
 //Second Card
 .card {
    display: flex;
