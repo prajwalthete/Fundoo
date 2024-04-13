@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { error } from 'console';
 import { UserService } from 'src/app/services/userService/user.service';
 
 @Component({
@@ -12,10 +13,8 @@ export class SigninComponent implements OnInit {
 
   loginForm!: FormGroup;
   submitted = false;
-  errorMessage: string = ''; // Declare errorMessage property here
-  loginMessageColor: string = 'green';
-
-  constructor(private userService: UserService, private formBuilder: FormBuilder, private router: Router) { }
+  
+  constructor( private userService:UserService, private formBuilder: FormBuilder, private  router: Router) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -27,39 +26,32 @@ export class SigninComponent implements OnInit {
   // Convenience getter for easy access to form fields
   get f() { return this.loginForm.controls; }
 
-  handelLogin() {
+  handleLogin() {
     this.submitted = true;
 
     // Stop here if form is invalid
     if (this.loginForm.invalid) {
       return;
     }
-    const { email, password } = this.loginForm.value;
+    const {email, password}= this.loginForm.value;
 
     this.userService.loginApi({
-      email: email,
-      password: password
-    }).subscribe(
-      results => {
-        
-        console.log(results);
-        
-        this.errorMessage = results.message;
-        this.loginMessageColor= 'green';
-        setTimeout(() => {
-          this.errorMessage = ''; // Clear the message after 5 seconds
-        }, 5000); // 5 seconds delay
-      
-        
-      },
-      error => {
-       this.errorMessage = 'Invalid credentials.!';
-       this.loginMessageColor = 'red';
-      }
-    );
+      email : email,
+      password : password
+    }).subscribe( results =>{localStorage.setItem("AuthToken", results.data)
+      this.router.navigate(['/dashboard/notes'])
+    },error=>{console.log(error)});
+
+
+    console.log('Login successful', this.loginForm.value);
   }
 
-  handelCreateAccount() {
+  
+  handleCreateAccount(){
     this.router.navigate(['/signup']);
+  }
+
+  handlePassword(){
+    
   }
 }

@@ -5,7 +5,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ArchivecontainerComponent } from './components/archivecontainer/archivecontainer.component';
 import { TrashcontainerComponent } from './components/trashcontainer/trashcontainer.component';
-import { NotecontainerComponent } from './components/notecontainer/notecontainer.component';
+import { NotescontainerComponent } from './components/notescontainer/notescontainer.component';
 
 const routes: Routes = [
   {
@@ -16,7 +16,7 @@ const routes: Routes = [
   },
   {
   path : 'dashboard',component:DashboardComponent,children :[
-    {path:'note',component:NotecontainerComponent},
+    {path:'notes',component:NotescontainerComponent},
     { path:'archive',component:ArchivecontainerComponent},
     {path:'trash',component:TrashcontainerComponent}
 

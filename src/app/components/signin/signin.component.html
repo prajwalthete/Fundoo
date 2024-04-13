@@ -1,3 +1,6 @@
+<!-- Displaying a message indicating that sign-in works -->
+<!-- <p>Signin works!</p> -->
+
 <!-- Wrapper for the entire content -->
 <div class="wrapper" style="width: 600px; margin: 0 auto">
   <!-- Border around the content -->
@@ -15,87 +18,85 @@
       <h5 class="sub-header">Use your Fundoo Account</h5>
 
       <!-- Form for user login with formGroup directive -->
-      <form [formGroup]="loginForm" (ngSubmit)="handelLogin()">
+      <form [formGroup]="loginForm" (ngSubmit)="handleLogin()">
         <!-- Input container -->
         <div class="input" style="display: inline-block; text-align: left">
-          <!-- Email input field -->
-          <div
-            class="form-group email"
-            [ngClass]="{ 'has-error': submitted && f['email']?.errors }"
-          >
-            <!-- Angular Material form field for email -->
-            <mat-form-field appearance="outline">
-              <!-- Label for email input -->
-              <mat-label>Enter your Email</mat-label>
-              <!-- Actual input for email -->
-              <input matInput placeholder="Email" formControlName="email" />
-              <!-- Error message if email is invalid -->
-              <mat-error *ngIf="submitted && f['email']?.errors?.['required']">
-                Email is required
-              </mat-error>
-              <mat-error *ngIf="submitted && f['email']?.errors?.['email']">
-                Email is invalid
-              </mat-error>
-            </mat-form-field>
+          <div class="button-base">
+            <!-- Email input field -->
+            <div
+              class="form-group email"
+              [ngClass]="{ 'has-error': submitted && f['email']?.errors }"
+            >
+              <!-- Angular Material form field for email -->
+              <mat-form-field appearance="outline">
+                <!-- Label for email input -->
+                <mat-label>Enter your Email</mat-label>
+                <!-- Actual input for email -->
+                <input matInput placeholder="Email" formControlName="email" />
+                <!-- Error message if email is invalid -->
+                <mat-error
+                  *ngIf="submitted && f['email']?.errors?.['required']"
+                >
+                  Email is required
+                </mat-error>
+
+                <mat-error *ngIf="submitted && f['email']?.errors?.['email']">
+                  Email is invalid
+                </mat-error>
+              </mat-form-field>
+              <br />
+              <!-- Password input field -->
+              <mat-form-field appearance="outline">
+                <!-- Label for password input -->
+                <mat-label>Enter your Password</mat-label>
+                <!-- Actual input for password -->
+                <input
+                  matInput
+                  placeholder="Password"
+                  formControlName="password"
+                />
+                <!-- Error message if password is invalid -->
+                <mat-error
+                  *ngIf="submitted && f['password'].errors?.['required']"
+                >
+                  Password is required
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <!-- Button to submit the form -->
+            <div class="loginBtn">
+              <button mat-flat-button color="primary">Login</button>
+            </div>
+
             <br />
-            <!-- Password input field -->
-            <mat-form-field appearance="outline">
-              <!-- Label for password input -->
-              <mat-label>Enter your Password</mat-label>
-              <!-- Actual input for password -->
-              <input
-                matInput
-                type="password"
-                placeholder="Password"
-                formControlName="password"
-              />
-              <!-- Error message if password is invalid -->
-              <mat-error
-                *ngIf="submitted && f['password'].errors?.['required']"
-              >
-                Password is required
-              </mat-error>
-            </mat-form-field>
           </div>
 
-          <!-- Display error message from API -->
-          <div
-            *ngIf="errorMessage"
-            [style.color]="loginMessageColor"
-            class="error-message"
-          >
-            {{ errorMessage }}
+          <!-- Link for forgot password -->
+
+          <div class="forgot-password">
+            <button
+              mat-stroked-button
+              color="primary"
+              (click)="handlePassword()"
+            >
+              Forgot Password?
+            </button>
           </div>
 
-          <!-- Button to submit the form -->
-          <div class="registerBtn">
-            <button mat-stroked-button color="primary" type="submit">
-              Login
+          <!-- Link for creating a new account -->
+
+          <div class="create-account">
+            <button
+              mat-stroked-button
+              color="primary"
+              (click)="handleCreateAccount()"
+            >
+              Create Account
             </button>
           </div>
         </div>
       </form>
-
-      <!-- Link for forgot password -->
-      <div class="forgot-password">
-        <small
-          ><a href="#" style="text-decoration: none; color: blue"
-            >Forgot Password?</a
-          ></small
-        >
-      </div>
-
-      <!-- Link for creating a new account -->
-      <div class="create-account">
-        <button
-          (click)="handelCreateAccount()"
-          mat-stroked-button
-          color="primary"
-          type="submit"
-        >
-          Create Account
-        </button>
-      </div>
     </div>
   </div>
 </div>

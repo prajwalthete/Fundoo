@@ -1,69 +1,55 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserService } from 'src/app/services/userService/user.service';
 import { Router } from '@angular/router';
+import { error } from 'console';
+import { UserService } from 'src/app/services/userService/user.service';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss']
 })
+
 export class SignupComponent implements OnInit {
-  registerForm!: FormGroup; 
-  submitted = false;
-  registrationMessage: string = '';
-  registrationMessageColor: string = 'green'; // Change this to any color you prefer
+  registerForm!: FormGroup;
+  submitted = false;  
+  
+  constructor(private userService:UserService, private formBuilder: FormBuilder, private  router: Router) { }
 
-
-  constructor(private userService:UserService, private formBuilder: FormBuilder, private router: Router) { }
-
-  ngOnInit(): void {
-    this.registerForm = this.formBuilder.group({
+  ngOnInit(){
+    this.registerForm = this.formBuilder.group({      
       firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      lastName: ['', Validators.required],      
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      password: ['', [Validators.required, Validators.minLength(6)]]      
     });
   }
 
-  // Convenience getter for easy access to form fields
   get f() { return this.registerForm.controls; }
 
-  onRegisterSubmit(): void {
-    this.submitted = true;
-
-    // Stop here if form is invalid
-    if (this.registerForm.invalid) {
-      return;
-    }
-    const {firstName, lastName, email, password} = this.registerForm.value;
-
-    this.userService.registerApi({
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      password: password
-    }).subscribe(
-      (response) => {
-        // Assuming the API returns a message in the response
-        this.registrationMessage = response.message;
-        this.registrationMessageColor = 'green'; // Success color
-
-        // Delay login redirection for 3 seconds
-        setTimeout(() => {
-          this.redirectLogin();
-        }, 3000); // 3 seconds delay
-      },
-      (error) => {
-        // Handle error
-        this.registrationMessage = 'An error occurred. Please try again later.';
-        this.registrationMessageColor = 'red'; // Error color
+  handleRegister(): void {
+      this.submitted = true;
+      // stop here if form is invalid
+      if (this.registerForm.invalid) {
+          return;
       }
-    );
-    console.log('signup successful', this.registerForm.value);
-  }
 
-  redirectLogin(){
+      const {firstName, lastName, email, password}= this.registerForm.value;
+
+      this.userService.registerApi({
+        firstName : firstName,
+        lastName : lastName,
+        email : email,
+        password : password
+      }).subscribe( results =>{console.log(results)},error=>{console.log(error)});
+
+      // display form values on success
+      console.log('Registration done!');
+      console.log(this.registerForm.value);   
+      this.handleSignIn();   
+  }
+  
+  handleSignIn(){
     this.router.navigate(['']);
   }
 }

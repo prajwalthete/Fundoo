@@ -4,6 +4,7 @@ import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Subscriber, Subscription } from 'rxjs';
+import { DataService } from 'src/app/services/dataService/data.service';
 // import { DataServiceService } from 'src/app/services/data-service.service';
 import {
   NOTE_ICON,
@@ -22,11 +23,10 @@ import {
 })
 export class SidenavComponent implements OnInit {
 
-  drawerState!: boolean;
+  drawerState: boolean = false;
   subscription!: Subscription;
-  data: any;
 
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer,/*  private data: DataServiceService, */ public router: Router) {
+  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private data: DataService, public router: Router) {
     iconRegistry.addSvgIconLiteral("Note-icon", sanitizer.bypassSecurityTrustHtml(NOTE_ICON))
     iconRegistry.addSvgIconLiteral("Reminder-icon", sanitizer.bypassSecurityTrustHtml(REMINDER_ICON))
     iconRegistry.addSvgIconLiteral("Edit-labels-icon", sanitizer.bypassSecurityTrustHtml(EDIT_ICON))
@@ -37,9 +37,7 @@ export class SidenavComponent implements OnInit {
   ngOnInit(): void {
     this.subscription = this.data.currDrawerState.subscribe((state: boolean) => this.drawerState = state)
   }
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe()
-  }
+  
   archiveNavigate(bool : boolean) {
     this.router.navigate(["/dashboard/archive"])
     if(bool){
@@ -71,4 +69,7 @@ export class SidenavComponent implements OnInit {
       }
   }
 
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe()
+  }
 }

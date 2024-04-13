@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import { NoteService } from 'src/app/services/noteService/note.service';
 import {
   IMG_ICON,
   TICK_ICON,
@@ -15,22 +16,32 @@ import {
   RESTORE_ICON
 } from 'src/assets/svg-icons';
 
+interface NoteObj {
+  noteId?: number,
+  title?: string,
+  description?: string,
+  isArchived?: boolean,
+  isDeleted?: boolean,
+  color?: string
+}
 @Component({
   selector: 'app-createnote',
   templateUrl: './createnote.component.html',
   styleUrls: ['./createnote.component.scss']
 })
 export class CreatenoteComponent implements OnInit {
-  @Output() updateList = new EventEmitter<{
-    action: string,
-    data: {
-      title: string,
-      description: string,
-      noteID: number,
-      color: string,
-      archive: boolean
-    }
-  }>();
+  // @Output() updateList = new EventEmitter<{
+  //   action: string,
+  //   data: {
+  //     title: string,
+  //     description: string,
+  //     noteID: number,
+  //     color: string,
+  //     archive: boolean
+  //   }
+  // }>();
+
+  @Output() updateNotesList = new EventEmitter<{action: string, data: NoteObj}>();
 
   hiddenCreateNote: boolean = true;
   title: string = "";
@@ -39,7 +50,7 @@ export class CreatenoteComponent implements OnInit {
   color: string = "";
   showColorPicker: boolean = false;
 
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private noteService: NoteService) {
     // Register SVG icons
     iconRegistry.addSvgIconLiteral('Tick-icon', sanitizer.bypassSecurityTrustHtml(TICK_ICON));
     iconRegistry.addSvgIconLiteral('Brush-icon', sanitizer.bypassSecurityTrustHtml(BRUSH_ICON));
@@ -64,12 +75,13 @@ export class CreatenoteComponent implements OnInit {
       const noteObj = {
         "title": this.title,
         "description": this.description,
-        "color": this.color,
-        "archive": this.archive,
-        "noteID": 0 // You may need to assign a unique ID here
+        "color": "#ffffff",
       };
       // Emit event to update note list
-      this.updateList.emit({ action: "create", data: noteObj });
+      // this.updateList.emit({ action: "create", data: noteObj });
+      this.noteService.addNoteCall(noteObj).subscribe(res=>{console.log(res)
+        this.updateNotesList.emit({action: "create",  data: res.data})
+      }, err=>{console.log(err)});
     }
     else if(this.showColorPicker==true) {
       this.toggleColorPicker();

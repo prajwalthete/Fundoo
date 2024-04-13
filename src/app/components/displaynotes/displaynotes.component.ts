@@ -22,7 +22,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./displaynotes.component.scss']
 })
 export class DisplaynotesComponent implements OnInit {
-
+  @Input() notesData : any
   @ViewChild('unarchiveButton')
   unarchiveButton!: TemplateRef<any>;
   // Output to emit events to parent component
@@ -57,6 +57,8 @@ export class DisplaynotesComponent implements OnInit {
   // Handle click events on icons
   handleIconsClick(action: string, noteID: number) {
     // This method is intentionally left empty
+    // API CALLING
+    // EMITTING EVENT
   }
 
   // Toggle color picker visibility

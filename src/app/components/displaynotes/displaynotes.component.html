@@ -1,17 +1,18 @@
-<div class="main-div">
+<div class="main-div" *ngFor="let note of notesData">
   <div class="displaynote-div">
     <!-- Card displaying note details -->
     <div class="card">
       <!-- Title section of the card -->
       <div class="card-title" (click)="openEditNote()">
-        <span>abccdfgf</span>
+        <span>{{ note.title }}</span>
       </div>
 
       <!-- Description section of the card -->
       <textarea
         class="card-description"
         [style.background-color]="note.color ? note.color : '#fffff'"
-        (click)="openEditNote()">gfxhvjbnm,.m</textarea
+        (click)="openEditNote()"
+        >{{ note.description }}</textarea
       >
 
       <!-- Icon container -->

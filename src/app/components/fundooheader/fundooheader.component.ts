@@ -12,6 +12,7 @@ import {
 
 import { Subscription } from 'rxjs';
 import { Route, Router } from '@angular/router';
+import { DataService } from 'src/app/services/dataService/data.service';
 
 
 
@@ -25,9 +26,9 @@ export class FundooheaderComponent implements OnInit {
   searchState: string = '';
   subscription: any;
   data: any;
-  drawerState: any;
+  drawerState: boolean = false;
 
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, public router: Router) {
+  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, public router: Router, public dataService: DataService) {
     iconRegistry.addSvgIconLiteral("Menu-icon", sanitizer.bypassSecurityTrustHtml(MENU_ICON))
     iconRegistry.addSvgIconLiteral("Search-icon", sanitizer.bypassSecurityTrustHtml(SEARCH_ICON))
     iconRegistry.addSvgIconLiteral("Refresh-icon", sanitizer.bypassSecurityTrustHtml(REFRESH_ICON))
@@ -37,11 +38,11 @@ export class FundooheaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.subscription = this.data.currDrawerState.subscribe((state: any) => this.drawerState = state)
+    this.subscription = this.dataService.currDrawerState.subscribe((state: boolean) => this.drawerState = state)
   }
 
   handleToggleDrawer() {
-    this.data.toggleDrawerState(!this.drawerState)
+    this.dataService.changeDrawerState(!this.drawerState);
   }
 
   handleAccClick() {
@@ -54,6 +55,6 @@ export class FundooheaderComponent implements OnInit {
   }
 
   ngOnDestroy() {
-   // this.subscription.unsubscribe();
+    this.subscription.unsubscribe();
   }
 }

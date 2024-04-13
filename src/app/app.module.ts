@@ -21,13 +21,12 @@ import { FundooheaderComponent } from './components/fundooheader/fundooheader.co
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { DisplaynotesComponent } from './components/displaynotes/displaynotes.component';
-
 //for display notes 
 import { MatDialogModule } from '@angular/material/dialog'; // Import MatDialogModule for using MatDialog
 import { MatSnackBarModule } from '@angular/material/snack-bar'; // Import MatSnackBarModule for using MatSnackBar
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
-import { NotecontainerComponent } from './components/notecontainer/notecontainer.component';
+import { NotescontainerComponent } from './components/notescontainer/notescontainer.component';
 import { ArchivecontainerComponent } from './components/archivecontainer/archivecontainer.component';
 import { TrashcontainerComponent } from './components/trashcontainer/trashcontainer.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -40,7 +39,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     DisplaynotesComponent,
     FundooheaderComponent,
     SidenavComponent,
-    NotecontainerComponent,
+    NotescontainerComponent,
     TrashcontainerComponent,
     ArchivecontainerComponent,
     CreatenoteComponent,

@@ -1,11 +1,12 @@
- ::ng-deep .app-fundoo-header-cnt {
+::ng-deep .app-fundoo-header-cnt {
     display: flex;
     width: 100%;
    // position: fixed;
 }
 
 .dashboard_header {
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+    border-bottom: #000;
     width: 100%;    
 }
 
