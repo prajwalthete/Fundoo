@@ -21,7 +21,6 @@ export class HttpService {
   registerUser(endpoint: string, data: Object): Observable<any> {
     return this.httpClient.post<any>(this.BaseUrl + endpoint, data);
   }
-
   getAllNotes(endpoint: string): Observable<any> {
     return this.httpClient.get<any>(this.BaseUrl+endpoint, {headers: this.authHeader});
   }
@@ -29,11 +28,22 @@ export class HttpService {
   addNote(endpoint: string, data: Object): Observable<any> {
     return this.httpClient.post<any>(this.BaseUrl+endpoint, data, {headers: this.authHeader});
   }
-  archiveNote(endpoint: string, data: Object): Observable<any> {
-    return this.httpClient.post<any>(this.BaseUrl + endpoint, data, {headers: this.authHeader});
+
+  trashNote(endpoint: string): Observable<any> {
+    return this.httpClient.patch<any>(this.BaseUrl+endpoint, {}, {headers: this.authHeader});
   }
 
- 
+  archiveNote(endpoint: string): Observable<any> {
+    return this.httpClient.patch<any>(this.BaseUrl+endpoint, {}, {headers: this.authHeader});
+  }
+
+  deleteNote (endpoint: string): Observable<any> {
+    return this.httpClient.delete<any>(this.BaseUrl +endpoint,{headers: this.authHeader});
+
+  }
+  updateNote(endpoint: string, data: Object): Observable<any> {
+    return this.httpClient.put<any>(this.BaseUrl + endpoint, data, { headers: this.authHeader });
+  }
 
 
 }
