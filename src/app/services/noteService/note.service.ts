@@ -28,7 +28,7 @@ export class NoteService {
     return this.httpService.deleteNote(`note/${noteId}`)}
 
   updateNoteCall(noteId: number, data: Object) {
-    return this.httpService.updateNote(`note/${noteId},`, data);
+    return this.httpService.updateNote(`note/${noteId}`, data);
   }
  
 }
