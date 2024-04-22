@@ -30,6 +30,10 @@ import { NotescontainerComponent } from './components/notescontainer/notescontai
 import { ArchivecontainerComponent } from './components/archivecontainer/archivecontainer.component';
 import { TrashcontainerComponent } from './components/trashcontainer/trashcontainer.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { EditnoteComponent } from './components/editnote/editnote.component';
+import { SearchnotePipe } from './pipe/searchnote.pipe';
+
+// edit 
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +48,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     ArchivecontainerComponent,
     CreatenoteComponent,
     FundooheaderComponent,
+    EditnoteComponent,
+    SearchnotePipe,
     
   ],
   imports: [

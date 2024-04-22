@@ -4,10 +4,15 @@ import { Router } from '@angular/router';
 import { error } from 'console';
 import { UserService } from 'src/app/services/userService/user.service';
 
+
+
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.scss']
+  styleUrls: ['./signin.component.scss'],
+  host: {
+    class: 'app-signin-cnt'
+  }  
 })
 export class SigninComponent implements OnInit {
 
@@ -49,9 +54,5 @@ export class SigninComponent implements OnInit {
   
   handleCreateAccount(){
     this.router.navigate(['/signup']);
-  }
-
-  handlePassword(){
-    
   }
 }

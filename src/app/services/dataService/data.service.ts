@@ -9,9 +9,8 @@ export class DataService {
   private drawerState = new BehaviorSubject(false);
   currDrawerState = this.drawerState.asObservable();
 
-  private searchQuery = new  BehaviorSubject('')
-currSearchQuery = this.searchQuery.asObservable();
-  currentNoteData: any;
+  private searchQuery = new BehaviorSubject('');
+  currSearchQuery = this.searchQuery.asObservable();
 
   constructor() { }
 
@@ -19,8 +18,8 @@ currSearchQuery = this.searchQuery.asObservable();
     this.drawerState.next(state)
   }
 
-  updateSearchQuery( state: string) {
-    this.searchQuery.next(state);
-
+  updateSearchQuery(state: string)
+  {
+    this.searchQuery.next(state)  
   }
 }

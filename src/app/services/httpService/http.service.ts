@@ -44,6 +44,10 @@ export class HttpService {
   updateNote(endpoint: string, data: Object): Observable<any> {
     return this.httpClient.put<any>(this.BaseUrl + endpoint, data, { headers: this.authHeader });
   }
+  
+  forgotPassword(endpoint: string, data: Object): Observable<any> {
+    return this.httpClient.post<any>(this.BaseUrl + endpoint, data);
+  };
 
 
 }

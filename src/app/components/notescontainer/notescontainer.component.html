@@ -1,2 +1,12 @@
-<app-createnote (updateNotesList)="handleUpdateNotesList($event)"></app-createnote>
-<app-displaynotes (updateNotesList)="handleUpdateNotesList($event)" [notesData]="notesList" [container]="'notes'"></app-displaynotes>
+<app-createnote
+  (updateNotesList)="handleUpdateNotesList($event)"
+></app-createnote>
+<div style="display: flex; flex-wrap: wrap">
+  <div>
+    <app-displaynotes
+      (updateNotesList)="handleUpdateNotesList($event)"
+      [notesData]="notesList"
+      [container]="'notes'"
+    ></app-displaynotes>
+  </div>
+</div>

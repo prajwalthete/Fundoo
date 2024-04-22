@@ -1,7 +1,23 @@
-.horizontal-layout {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+// .horizontal-layout {
+//     display: flex;
+//     flex-direction: row;
+//     flex-wrap: wrap;
+//     justify-content: center;
    
-}
+// }
+
+.container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .inner-container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 800px;
+  }
+  
+  .inner-container > div {
+    margin-right: 10px;
+  }
+  

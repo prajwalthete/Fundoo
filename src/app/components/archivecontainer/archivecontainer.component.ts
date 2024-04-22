@@ -50,19 +50,6 @@ export class ArchivecontainerComponent implements OnInit {
       this.notesList = this.notesList.filter(
         (note) => note.noteId !== data.noteId
       );
-    } else {
-      const updatedData = {
-        ...data,
-        color: action,
-        noteID: data.noteId || 0,
-        archive: data.isArchived || false,
-        title: data.title || '',
-        description: data.description || '',
-      };
-      this.updateList.emit({
-        action: 'color',
-        data: updatedData,
-      });
     }
   }
 }
